@@ -1,0 +1,8 @@
+.action-button {
+    background: none;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+}
