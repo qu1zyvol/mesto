@@ -17,13 +17,13 @@
                 <img class="profile__avatar-image" src="images/profile/avatar.png" alt="Аватар профиля"/>
             </figure>
             <div class="profile__info">
-                <h1 class="profile__title">
-                    Жак-Ив Кусто
+                <div class="profile__title-container">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="action-button profile__edit-button">
-                        <img class="action-button-image" src="images/action-button/edit.svg" alt="Редактировать профиль"/>
+                        <img class="action-button-image" src="images/action-button/edit.svg"
+                             alt="Редактировать профиль"/>
                     </button>
-                </h1>
-
+                </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
             <button class="action-button profile__add-button">
@@ -92,6 +92,29 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2021. Игорь Вольнов</p>
     </footer>
+    <div class="popup">
+        <div class="popup__content">
+            <button class="popup__close-button">
+                <img src="images/action-button/close.svg" alt="Закрыть окно" />
+            </button>
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <form class="popup__form">
+                <input type="text"
+                       name="title"
+                       class="popup__input popup__input_type_title"
+                       placeholder="Имя">
+                <input type="text"
+                       name="subtitle"
+                       class="popup__input popup__input_type_subtitle"
+                       placeholder="Подпись">
+                <button
+                        disabled="disabled"
+                        type="submit"
+                        class="popup__save-button">Сохранить</button>
+            </form>
+        </div>
+    </div>
 </div>
+<script src="./blocks/popup/popup.js"></script>
 </body>
 </html>
