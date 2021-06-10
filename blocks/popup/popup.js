@@ -1,21 +1,21 @@
 const popup = document.querySelector('.popup');
 const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelector('.popup__close-button');
-const saveButton = document.querySelector('.popup__save-button');
+const closeButton = popup.querySelector('.popup__close-button');
+const saveButton = popup.querySelector('.popup__save-button');
 
-const formElement = document.querySelector('.popup__form');
+const formElement = popup.querySelector('.popup__form');
 
-const titleInput = document.querySelector('.popup__input_type_title');
-const subtitleInput = document.querySelector('.popup__input_type_subtitle');
+const titleInput = popup.querySelector('.popup__input_type_title');
+const subtitleInput = popup.querySelector('.popup__input_type_subtitle');
 
 const titleText = document.querySelector('.profile__title');
 const subtitleText = document.querySelector('.profile__subtitle');
 const body = document.querySelector('body');
 
-function checkSaveButtonStatus(){
-    if(titleInput.value.length > 0 && subtitleInput.value.length > 0){
+function checkSaveButtonStatus() {
+    if (titleInput.value.length > 0 && subtitleInput.value.length > 0) {
         saveButton.removeAttribute('disabled');
-    }else{
+    } else {
         saveButton.setAttribute('disabled', 'disabled');
     }
 }
@@ -25,11 +25,11 @@ function keyAction(e) {
     if (e.keyCode === 13) saveData();
 }
 
-function getStorageData(){
+function getStorageData() {
     const savedTitle = localStorage.getItem('title');
     const savedSubTitle = localStorage.getItem('subtitle');
-    if(savedTitle) titleText.textContent = savedTitle;
-    if(savedSubTitle) subtitleText.textContent = savedSubTitle;
+    if (savedTitle) titleText.textContent = savedTitle;
+    if (savedSubTitle) subtitleText.textContent = savedSubTitle;
 }
 
 function openPopup() {
@@ -48,7 +48,7 @@ function closePopup() {
 }
 
 function saveData(e) {
-    if(e) e.preventDefault();
+    if (e) e.preventDefault();
     titleText.textContent = titleInput.value;
     subtitleText.textContent = subtitleInput.value;
 

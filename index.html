@@ -2,91 +2,36 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./pages/index.css" rel="stylesheet" type="text/css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="pages/index.css" rel="stylesheet" type="text/css">
     <title>Места России</title>
 </head>
 <body>
 <div class="page">
     <header class="header">
-        <img class="header__logo" src="images/header/logo.svg" alt="Места России"/>
+        <img alt="Места России" class="header__logo" src="images/header/logo.svg"/>
     </header>
     <main class="content">
         <section class="profile">
             <figure class="profile__avatar">
-                <img class="profile__avatar-image" src="images/profile/avatar.png" alt="Аватар профиля"/>
+                <img alt="Аватар профиля" class="profile__avatar-image" src="images/profile/avatar.png"/>
             </figure>
             <div class="profile__info">
                 <div class="profile__title-container">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="action-button profile__edit-button">
-                        <img class="action-button-image" src="images/action-button/edit.svg"
-                             alt="Редактировать профиль"/>
+                        <img alt="Редактировать профиль" class="action-button-image"
+                             src="images/action-button/edit.svg"/>
                     </button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
             <button class="action-button profile__add-button">
-                <img class="profile__add-button-image" src="images/action-button/add.svg" alt="Добавить место"/>
+                <img alt="Добавить место" class="profile__add-button-image" src="images/action-button/add.svg"/>
             </button>
         </section>
         <section class="page__elements elements">
-            <ul class="elements__list">
-                <li class="element">
-                    <img class="element__image" src="images/element/moscow.jpg" alt="Москва">
-                    <div class="element__title">
-                        <h2 class="element__title-text">Москва</h2>
-                        <button class="element__like-button like-button">
-                            <img src="images/like-button/like.svg" alt="Поставить лайк">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/element/piter.jpg" alt="Питер">
-                    <div class="element__title">
-                        <h2 class="element__title-text">Питер</h2>
-                        <button class="element__like-button like-button">
-                            <img src="images/like-button/like.svg" alt="Поставить лайк">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/element/karelia.jpg" alt="Карелия">
-                    <div class="element__title">
-                        <h2 class="element__title-text">Карелия</h2>
-                        <button class="element__like-button like-button">
-                            <img src="images/like-button/like.svg" alt="Поставить лайк">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/element/komi.jpg" alt="Коми">
-                    <div class="element__title">
-                        <h2 class="element__title-text">Коми</h2>
-                        <button class="element__like-button like-button">
-                            <img src="images/like-button/like.svg" alt="Поставить лайк">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/element/irkutsk.jpg" alt="Иркутск">
-                    <div class="element__title">
-                        <h2 class="element__title-text">Иркутск</h2>
-                        <button class="element__like-button like-button">
-                            <img src="images/like-button/like.svg" alt="Поставить лайк">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/element/kazan.jpg" alt="Казань">
-                    <div class="element__title">
-                        <h2 class="element__title-text">Казань</h2>
-                        <button class="element__like-button like-button">
-                            <img src="images/like-button/like.svg" alt="Поставить лайк">
-                        </button>
-                    </div>
-                </li>
-            </ul>
+            <ul class="elements__list"></ul>
         </section>
     </main>
     <footer class="footer">
@@ -94,27 +39,28 @@
     </footer>
     <div class="popup">
         <div class="popup__content">
-            <button class="popup__close-button">
-                <img src="images/action-button/close.svg" alt="Закрыть окно" />
-            </button>
+            <button class="popup__close-button"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form">
-                <input type="text"
+                <input class="popup__input popup__input_type_title"
                        name="title"
-                       class="popup__input popup__input_type_title"
-                       placeholder="Имя">
-                <input type="text"
+                       placeholder="Имя"
+                       type="text">
+                <input class="popup__input popup__input_type_subtitle"
                        name="subtitle"
-                       class="popup__input popup__input_type_subtitle"
-                       placeholder="Подпись">
+                       placeholder="Подпись"
+                       type="text">
                 <button
+                        class="popup__save-button"
                         disabled="disabled"
-                        type="submit"
-                        class="popup__save-button">Сохранить</button>
+                        type="submit">Сохранить
+                </button>
             </form>
         </div>
     </div>
 </div>
-<script src="./blocks/popup/popup.js"></script>
+
+<script src="blocks/popup/popup.js"></script>
+<script src="blocks/elements/elements.js"></script>
 </body>
 </html>

@@ -3,3 +3,9 @@
     display: flex;
     align-items: flex-end;
 }
+
+@media screen and (max-width: 910px) {
+    .profile__title-container {
+        position: relative;
+    }
+}

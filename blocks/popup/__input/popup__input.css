@@ -14,7 +14,6 @@
     margin-bottom: 0;
 }
 
-
-.popup__input:focus-visible{
+.popup__input:focus-visible {
     outline: none;
 }
