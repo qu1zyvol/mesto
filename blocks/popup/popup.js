@@ -38,6 +38,7 @@ function openPopup() {
     popup.classList.add('popup_visible');
     body.style.overflow = 'hidden';
     document.addEventListener('keydown', keyAction);
+    popup.addEventListener('click', closeOnClickAway, false);
     checkSaveButtonStatus();
 }
 
@@ -45,6 +46,13 @@ function closePopup() {
     popup.classList.remove('popup_visible');
     body.style.overflow = 'auto';
     document.removeEventListener('keydown', keyAction);
+    popup.removeEventListener('click', closeOnClickAway, false);
+}
+
+function closeOnClickAway(e) {
+    if (e.target.classList.contains('popup_visible')) {
+        closePopup();
+    }
 }
 
 function saveData(e) {
