@@ -7,7 +7,7 @@
     width: 40px;
     height: 40px;
     transition: opacity .3s linear;
-    background: url(../../../images/action-button/close.svg) center no-repeat;
+    background: url(../../../images/buttons/close.svg) center no-repeat;
 
 }
 

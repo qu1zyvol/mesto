@@ -25,12 +25,7 @@ function keyAction(e) {
     if (e.keyCode === 13) saveData();
 }
 
-function getStorageData() {
-    const savedTitle = localStorage.getItem('title');
-    const savedSubTitle = localStorage.getItem('subtitle');
-    if (savedTitle) titleText.textContent = savedTitle;
-    if (savedSubTitle) subtitleText.textContent = savedSubTitle;
-}
+
 
 function openPopup() {
     titleInput.value = titleText.textContent;
@@ -59,9 +54,6 @@ function saveData(e) {
     if (e) e.preventDefault();
     titleText.textContent = titleInput.value;
     subtitleText.textContent = subtitleInput.value;
-
-    localStorage.setItem('title', titleInput.value);
-    localStorage.setItem('subtitle', subtitleInput.value);
     closePopup();
 }
 
@@ -71,5 +63,4 @@ editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 formElement.addEventListener('submit', saveData);
 
-getStorageData();
 
