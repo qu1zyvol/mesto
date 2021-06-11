@@ -14,7 +14,6 @@
 * Закрытие всплывающего окна по нажатию кнопки ESC
 * Проверка заполнения полей в форме
 * Отправка формы по нажатию кнопки Enter
-* Сохранение всей изменяемой информации после перезагрузки страницы в localStorage
 * Простановка лайков
 
 ### Методы реализации
@@ -22,7 +21,6 @@
 * Grid Layout
 * Flexbox
 * Media queries
-* localStorage
 * Common JS
 
 ### [Ссылка на релиз в github pages](https://qu1zyvol.github.io/mesto/index.html)
