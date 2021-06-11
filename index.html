@@ -9,7 +9,7 @@
 <body>
 <div class="page">
     <header class="header">
-        <img alt="Места России" class="header__logo" src="images/header/logo.svg"/>
+        <img alt="Места России" class="header__logo" src="images/logo/logo.svg"/>
     </header>
     <main class="content">
         <section class="profile">
@@ -21,17 +21,67 @@
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="action-button profile__edit-button">
                         <img alt="Редактировать профиль" class="action-button-image"
-                             src="images/action-button/edit.svg"/>
+                             src="images/buttons/edit.svg"/>
                     </button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
             <button class="action-button profile__add-button">
-                <img alt="Добавить место" class="profile__add-button-image" src="images/action-button/add.svg"/>
+                <img alt="Добавить место" class="profile__add-button-image" src="images/buttons/add.svg"/>
             </button>
         </section>
-        <section class="page__elements elements">
-            <ul class="elements__list"></ul>
+        <section class="cards">
+            <ul class="cards__list">
+
+                <li class="card">
+                    <img src="images/card/moscow.jpg" alt="Москва" class="card__image">
+                    <div class="card__title">
+                        <h2 class="card__title-text">Москва</h2>
+                        <button class="like-button"></button>
+                    </div>
+                </li>
+
+                <li class="card">
+                    <img src="images/card/piter.jpg" alt="Питер" class="card__image">
+                    <div class="card__title">
+                        <h2 class="card__title-text">Питер</h2>
+                        <button class="like-button"></button>
+                    </div>
+                </li>
+
+                <li class="card">
+                    <img src="images/card/karelia.jpg" alt="Карелия" class="card__image">
+                    <div class="card__title">
+                        <h2 class="card__title-text">Карелия</h2>
+                        <button class="like-button"></button>
+                    </div>
+                </li>
+
+                <li class="card">
+                    <img src="images/card/komi.jpg" alt="Республика Коми" class="card__image">
+                    <div class="card__title">
+                        <h2 class="card__title-text">Республика Коми</h2>
+                        <button class="like-button"></button>
+                    </div>
+                </li>
+
+                <li class="card">
+                    <img src="images/card/irkutsk.jpg" alt="Иркутск" class="card__image">
+                    <div class="card__title">
+                        <h2 class="card__title-text">Иркутск</h2>
+                        <button class="like-button"></button>
+                    </div>
+                </li>
+
+                <li class="card">
+                    <img src="images/card/kazan.jpg" alt="Казань" class="card__image">
+                    <div class="card__title">
+                        <h2 class="card__title-text">Казань</h2>
+                        <button class="like-button"></button>
+                    </div>
+                </li>
+
+            </ul>
         </section>
     </main>
     <footer class="footer">
@@ -42,25 +92,15 @@
             <button class="popup__close-button"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form">
-                <input class="popup__input popup__input_type_title"
-                       name="title"
-                       placeholder="Имя"
-                       type="text">
-                <input class="popup__input popup__input_type_subtitle"
-                       name="subtitle"
-                       placeholder="Подпись"
-                       type="text">
-                <button
-                        class="popup__save-button"
-                        disabled="disabled"
-                        type="submit">Сохранить
-                </button>
+                <input class="popup__input popup__input_type_title" name="title" placeholder="Имя" type="text">
+                <input class="popup__input popup__input_type_subtitle" name="subtitle" placeholder="Подпись" type="text">
+                <button class="popup__save-button" disabled="disabled" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
 </div>
 
 <script src="blocks/popup/popup.js"></script>
-<script src="blocks/elements/elements.js"></script>
+<script src="blocks/cards/cards.js"></script>
 </body>
 </html>

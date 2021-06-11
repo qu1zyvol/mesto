@@ -4,7 +4,7 @@
     padding: 0;
     width: 22px;
     height: 19px;
-    background: url("../../images/like-button/like.svg") center no-repeat;
+    background: url("../../images/buttons/like.svg") center no-repeat;
 }
 
 .like-button:hover {
