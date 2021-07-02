@@ -14,50 +14,50 @@ const subtitleText = document.querySelector('.profile__subtitle');
 
 const cardsList = document.querySelector('.cards__list');
 
+const popups = document.querySelectorAll('.popup');
+const profilePopup = document.querySelector('#profile-popup');
+const addCardPopup = document.querySelector('#add-card-popup');
+
 function addNewCard(e) {
     e.preventDefault();
     const newCard = createCard({
         name: nameInput.value,
         link: linkInput.value
     });
-
-    nameInput.value = '';
-    linkInput.value = '';
-
     cardsList.prepend(newCard);
-    closePopup('#add-card-popup');
+    addCardForm.reset();
+    closePopup(addCardPopup);
 }
 
-function initPopup(id) {
-    if (id === '#profile-popup') {
-        titleInput.value = titleText.textContent;
-        subtitleInput.value = subtitleText.textContent;
-    }
+function openProfilePopup(){
+    titleInput.value = titleText.textContent;
+    subtitleInput.value = subtitleText.textContent;
+    openPopup(profilePopup);
 }
 
-function openPopup(id) {
-    const popup = document.querySelector(id);
+function openPopup(popup) {
     popup.classList.add('popup_visible');
-    popup.querySelector('.popup__close-button').addEventListener('click', () => closePopup(id));
-    initPopup(id);
 }
 
-function closePopup(id) {
-    const popup = document.querySelector(id);
+function closePopup(popup) {
     popup.classList.remove('popup_visible');
-    popup.querySelector('.popup__close-button').removeEventListener('click', () => closePopup(id));
 }
 
 function saveProfileData(e) {
     e.preventDefault();
     titleText.textContent = titleInput.value;
     subtitleText.textContent = subtitleInput.value;
-    closePopup('#profile-popup');
+    closePopup(profilePopup);
 }
 
-editProfileButton.addEventListener('click', (evt) => openPopup("#profile-popup", evt));
-addCardButton.addEventListener('click', (evt) => openPopup("#add-card-popup", evt));
+editProfileButton.addEventListener('click', openProfilePopup);
+addCardButton.addEventListener('click', () => openPopup(addCardPopup));
 editProfileForm.addEventListener('submit', saveProfileData);
 addCardForm.addEventListener('submit', addNewCard);
+
+popups.forEach((popup) => {
+    popup.querySelector('.popup__close-button').addEventListener('click', () => closePopup(popup));
+})
+
 
 

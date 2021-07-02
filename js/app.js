@@ -1,45 +1,12 @@
 const cardTemplate = document.querySelector('#card').content;
 const showCardPopup = document.querySelector('#show-card-popup');
 
-const initialCards = [
-    {
-        name: 'Москва',
-        link: 'images/card/moscow.jpg'
-    },
-    {
-        name: 'Питер',
-        link: 'images/card/piter.jpg'
-    },
-    {
-        name: 'Карелия',
-        link: 'images/card/karelia.jpg'
-    },
-    {
-        name: 'Республика Коми',
-        link: 'images/card/komi.jpg'
-    },
-    {
-        name: 'Иркутск',
-        link: 'images/card/irkutsk.jpg'
-    },
-    {
-        name: 'Казань',
-        link: 'images/card/kazan.jpg'
-    },
-];
-
-function closeCard(e){
-    showCardPopup.classList.remove('popup_visible');
-    showCardPopup.querySelector('.popup__close-button').removeEventListener('click', closeCard);
-}
-
 function showCard(e){
     const imageTarget = e.target;
     showCardPopup.querySelector('.popup__image').src = imageTarget.src;
     showCardPopup.querySelector('.popup__image').alt = imageTarget.alt;
     showCardPopup.querySelector('.popup__image-title').textContent = imageTarget.alt;
-    showCardPopup.classList.add('popup_visible');
-    showCardPopup.querySelector('.popup__close-button').addEventListener('click', closeCard);
+    openPopup(showCardPopup);
 }
 
 function toggleLike(e) {
@@ -68,10 +35,7 @@ function createCard(elData) {
 
 function createInitialCards(data) {
     const cardsList = document.querySelector('.cards__list');
-    for (let i = 0; i < data.length; i += 1) {
-        const card = createCard(data[i]);
-        cardsList.append(card);
-    }
+    data.forEach(cardData => cardsList.append(createCard(cardData)));
 }
 
 createInitialCards(initialCards);

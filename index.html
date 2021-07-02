@@ -52,8 +52,9 @@
             <button type="button" class="popup__close-button"></button>
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__add-card" name="add-card-form">
-                <input class="popup__input popup__input_type_name" name="name" placeholder="Название" type="text">
-                <input class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку"
+                <input class="popup__input popup__input_type_name" name="name" placeholder="Название" required
+                       type="text">
+                <input class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" required
                        type="text">
                 <button type="submit" class="popup__save-button">Добавить</button>
             </form>
@@ -79,6 +80,7 @@
     </li>
 </template>
 
+<script src="js/initialCards.js"></script>
 <script src="js/popup.js"></script>
 <script src="js/app.js"></script>
 
