@@ -3,14 +3,11 @@
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     font-size: 14px;
+    border-radius: 0;
     line-height: 17px;
     box-sizing: border-box;
     padding: 0 0 9px 0;
-    margin-bottom: 30px;
-}
 
-.popup__input:last-of-type {
-    margin-bottom: 0;
 }
 
 .popup__input:focus-visible {
