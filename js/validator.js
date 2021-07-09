@@ -42,13 +42,21 @@ const enableValidation = (validationProperties) => {
     formList.forEach((formElement) => {
         const inputList = Array.from(formElement.querySelectorAll(inputSelector));
         const buttonElement = formElement.querySelector(submitButtonSelector);
-        toggleButtonState(inputList, buttonElement);
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', function () {
                 checkInputValidity(inputElement, inputErrorClass, errorClass);
                 toggleButtonState(inputList, buttonElement, inactiveButtonClass);
             });
         });
+        formElement.resetValidation = () => {
+            toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+            inputList.forEach((inputElement) => {
+                const errorElement = inputElement.nextElementSibling
+                inputElement.classList.remove(inputErrorClass);
+                errorElement.classList.remove(errorClass);
+                errorElement.textContent = '';
+            });
+        }
     });
 };
 

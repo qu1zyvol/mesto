@@ -1,7 +1,7 @@
 const cardTemplate = document.querySelector('#card').content;
 const showCardPopup = document.querySelector('#show-card-popup');
 
-function showCard(e){
+const showCard = (e) => {
     const imageTarget = e.target;
     showCardPopup.querySelector('.popup__image').src = imageTarget.src;
     showCardPopup.querySelector('.popup__image').alt = imageTarget.alt;
@@ -9,17 +9,17 @@ function showCard(e){
     openPopup(showCardPopup);
 }
 
-function toggleLike(e) {
+const toggleLike = (e) => {
     const currentButton = e.target;
     currentButton.classList.toggle('like-button_active');
 }
 
-function removeCard(e) {
+const removeCard = (e) => {
     const currentCard = e.target.closest('.card');
     currentCard.remove();
 }
 
-function createCard(elData) {
+const createCard = (elData) => {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     const cardImage = cardElement.querySelector('.card__image');
     cardImage.src = elData.link;
@@ -33,7 +33,7 @@ function createCard(elData) {
     return cardElement;
 }
 
-function createInitialCards(data) {
+const createInitialCards = (data) => {
     const cardsList = document.querySelector('.cards__list');
     data.forEach(cardData => cardsList.append(createCard(cardData)));
 }

@@ -18,49 +18,49 @@ const popups = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('#profile-popup');
 const addCardPopup = document.querySelector('#add-card-popup');
 
-function keyAction(e) {
+const keyAction = (e) => {
     if (e.keyCode === 27) closePopup();
 }
 
-function closeOnClickAway(e) {
+const closeOnClickAway = (e) => {
     const popup = e.target;
     if (popup.classList.contains('popup_visible')) {
         closePopup();
     }
 }
 
-function addNewCard(e) {
+const addNewCard = (e) => {
     e.preventDefault();
     const newCard = createCard({
         name: nameInput.value,
         link: linkInput.value
     });
     cardsList.prepend(newCard);
-    addCardForm.reset();
     closePopup();
 }
 
-function openProfilePopup(){
-    editProfileForm.reset();
+const openProfilePopup = () => {
     titleInput.value = titleText.textContent;
     subtitleInput.value = subtitleText.textContent;
     openPopup(profilePopup);
 }
 
-function openPopup(popup) {
+const openPopup = (popup) => {
+    popup.querySelector('form').resetValidation();
     popup.classList.add('popup_visible');
     document.addEventListener('keydown', keyAction);
-    popup.addEventListener('click', closeOnClickAway);
+    popup.addEventListener('mousedown', closeOnClickAway);
 }
 
-function closePopup() {
+const closePopup = () => {
     const popup = document.querySelector('.popup_visible');
+    popup.querySelector('form').reset();
     popup.classList.remove('popup_visible');
     document.removeEventListener('keydown', keyAction);
-    popup.removeEventListener('click', closeOnClickAway);
+    popup.removeEventListener('mousedown', closeOnClickAway);
 }
 
-function saveProfileData(e) {
+const saveProfileData = (e) => {
     e.preventDefault();
     titleText.textContent = titleInput.value;
     subtitleText.textContent = subtitleInput.value;
