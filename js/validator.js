@@ -50,12 +50,7 @@ const enableValidation = (validationProperties) => {
         });
         formElement.resetValidation = () => {
             toggleButtonState(inputList, buttonElement, inactiveButtonClass);
-            inputList.forEach((inputElement) => {
-                const errorElement = inputElement.nextElementSibling
-                inputElement.classList.remove(inputErrorClass);
-                errorElement.classList.remove(errorClass);
-                errorElement.textContent = '';
-            });
+            inputList.forEach((inputElement) => hideInputError(inputElement, inputErrorClass, errorClass));
         }
     });
 };

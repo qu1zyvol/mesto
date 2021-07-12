@@ -19,7 +19,7 @@ const profilePopup = document.querySelector('#profile-popup');
 const addCardPopup = document.querySelector('#add-card-popup');
 
 const keyAction = (e) => {
-    if (e.keyCode === 27) closePopup();
+    if (e.key === 'Escape') closePopup();
 }
 
 const closeOnClickAway = (e) => {
@@ -46,7 +46,7 @@ const openProfilePopup = () => {
 }
 
 const openPopup = (popup) => {
-    popup.querySelector('form').resetValidation();
+    popup.querySelector('form')?.resetValidation();
     popup.classList.add('popup_visible');
     document.addEventListener('keydown', keyAction);
     popup.addEventListener('mousedown', closeOnClickAway);
@@ -54,7 +54,7 @@ const openPopup = (popup) => {
 
 const closePopup = () => {
     const popup = document.querySelector('.popup_visible');
-    popup.querySelector('form').reset();
+    popup.querySelector('form')?.reset();
     popup.classList.remove('popup_visible');
     document.removeEventListener('keydown', keyAction);
     popup.removeEventListener('mousedown', closeOnClickAway);
