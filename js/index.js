@@ -1,3 +1,6 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
 
@@ -31,11 +34,11 @@ const closeOnClickAway = (e) => {
 
 const addNewCard = (e) => {
     e.preventDefault();
-    const newCard = createCard({
+    const newCard = new Card({
         name: nameInput.value,
         link: linkInput.value
-    });
-    cardsList.prepend(newCard);
+    }, '#card');
+    cardsList.prepend(newCard.renderCard());
     closePopup();
 }
 
@@ -76,5 +79,28 @@ popups.forEach((popup) => {
     popup.querySelector('.popup__close-button').addEventListener('click', closePopup);
 })
 
+/* Enable form validator */
+const validatorProps = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
 
+const profileFormValidator = new FormValidator(validatorProps, '.popup__edit-profile');
+const cardFormValidator = new FormValidator(validatorProps, '.popup__add-card');
 
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();
+/* End enable form validator */
+
+const createInitialCards = (data) => {
+    const cardsList = document.querySelector('.cards__list');
+    data.forEach(cardData => {
+        const card = new Card(cardData, '#card');
+        cardsList.append(card.renderCard());
+    });
+}
+
+createInitialCards(initialCards);
