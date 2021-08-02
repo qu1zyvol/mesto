@@ -1,3 +1,5 @@
+import { openPopup } from "./Popup.js";
+
 export default class Card {
     constructor(data, template){
         this._name = data.name;

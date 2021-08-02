@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import { openPopup, closePopup } from "./Popup.js";
 
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
@@ -21,17 +22,6 @@ const popups = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('#profile-popup');
 const addCardPopup = document.querySelector('#add-card-popup');
 
-const keyAction = (e) => {
-    if (e.key === 'Escape') closePopup();
-}
-
-const closeOnClickAway = (e) => {
-    const popup = e.target;
-    if (popup.classList.contains('popup_visible')) {
-        closePopup();
-    }
-}
-
 const addNewCard = (e) => {
     e.preventDefault();
     const newCard = new Card({
@@ -48,21 +38,6 @@ const openProfilePopup = () => {
     openPopup(profilePopup);
 }
 
-const openPopup = (popup) => {
-    popup.querySelector('form')?.resetValidation();
-    popup.classList.add('popup_visible');
-    document.addEventListener('keydown', keyAction);
-    popup.addEventListener('mousedown', closeOnClickAway);
-}
-
-const closePopup = () => {
-    const popup = document.querySelector('.popup_visible');
-    popup.querySelector('form')?.reset();
-    popup.classList.remove('popup_visible');
-    document.removeEventListener('keydown', keyAction);
-    popup.removeEventListener('mousedown', closeOnClickAway);
-}
-
 const saveProfileData = (e) => {
     e.preventDefault();
     titleText.textContent = titleInput.value;
@@ -72,6 +47,7 @@ const saveProfileData = (e) => {
 
 editProfileButton.addEventListener('click', openProfilePopup);
 addCardButton.addEventListener('click', () => openPopup(addCardPopup));
+
 editProfileForm.addEventListener('submit', saveProfileData);
 addCardForm.addEventListener('submit', addNewCard);
 
