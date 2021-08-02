@@ -104,3 +104,5 @@ const createInitialCards = (data) => {
 }
 
 createInitialCards(initialCards);
+
+document.body.classList.remove('.preload');
