@@ -1,5 +1,5 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
@@ -105,4 +105,4 @@ const createInitialCards = (data) => {
 
 createInitialCards(initialCards);
 
-document.body.classList.remove('.preload');
+document.body.classList.remove('preload');
