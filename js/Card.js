@@ -1,46 +1,39 @@
-import { openPopup } from "./Popup.js";
-
 export default class Card {
-    constructor(data, template){
+    constructor(data, template, handleCardClick){
         this._name = data.name;
         this._link = data.link;
         this._template = template;
-        this._cardPopup = document.querySelector('#show-card-popup');
-    }
-
-    _showCard() {
-        this._cardPopup.querySelector('.popup__image').src = this._link;
-        this._cardPopup.querySelector('.popup__image').alt = this._name;
-        this._cardPopup.querySelector('.popup__image-title').textContent = this._name;
-        openPopup(this._cardPopup);
+        this._handleCardClick = handleCardClick;
     }
 
     _toggleLike() {
-        const currentButton = this._cardElement.querySelector('.like-button');
-        currentButton.classList.toggle('like-button_active');
+        this._likeButton.classList.toggle('like-button_active');
     }
 
     _removeCard() {
-        console.log(this._cardElement);
         this._cardElement.remove();
     }
 
-    _makeElement(){
+    _makeElement() {
         const cardTemplate = document.querySelector(this._template).content;
         this._cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+        this._cardImage = this._cardElement.querySelector('.card__image');
+        this._likeButton = this._cardElement.querySelector('.like-button');
+        this._removeButton = this._cardElement.querySelector('.remove-button');
+    }
+
+    _setEventListeners() {
+        this._likeButton.addEventListener('click', () => this._toggleLike());
+        this._removeButton.addEventListener('click', () => this._removeCard());
+        this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     }
 
     renderCard() {
         this._makeElement();
-        const cardImage = this._cardElement.querySelector('.card__image');
-        cardImage.src = this._link;
-        cardImage.alt = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
         this._cardElement.querySelector('.card__title-text').innerText = this._name;
-        const cardLikeButton = this._cardElement.querySelector('.like-button');
-        const removeButton = this._cardElement.querySelector('.remove-button');
-        cardLikeButton.addEventListener('click', () => this._toggleLike());
-        removeButton.addEventListener('click', () => this._removeCard());
-        cardImage.addEventListener('click', () => this._showCard());
+        this._setEventListeners();
         return this._cardElement;
     }
 }

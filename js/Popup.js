@@ -10,7 +10,6 @@ const closeOnClickAway = (e) => {
 }
 
 export const openPopup = (popup) => {
-    popup.querySelector('form')?.resetValidation();
     popup.classList.add('popup_visible');
     document.addEventListener('keydown', keyAction);
     popup.addEventListener('mousedown', closeOnClickAway);
