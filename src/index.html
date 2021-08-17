@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="pages/index.css" rel="stylesheet" type="text/css">
     <title>Места России</title>
 </head>
 <body class="preload">
 <div class="page">
     <header class="header">
-        <img alt="Места России" class="header__logo" src="images/logo/logo.svg"/>
+        <img alt="Места России" class="header__logo" src="<%=require('./images/logo/logo.svg')%>"/>
     </header>
     <main class="content">
         <section class="profile">
-            <img alt="Аватар профиля" class="profile__avatar-image" src="images/profile/avatar.png"/>
+            <img alt="Аватар профиля" class="profile__avatar-image" src="<%=require('./images/profile/avatar.png')%>"/>
             <div class="profile__info">
                 <div class="profile__title-container">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button type="button" class="action-button profile__edit-button">
                         <img alt="Редактировать профиль" class="action-button-image"
-                             src="images/buttons/edit.svg"/>
+                             src="<%=require('./images/buttons/edit.svg')%>"/>
                     </button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
             <button type="button" class="action-button profile__add-button">
-                <img alt="Добавить место" class="profile__add-button-image" src="images/buttons/add.svg"/>
+                <img alt="Добавить место" class="profile__add-button-image" src="<%=require('./images/buttons/add.svg')%>"/>
             </button>
         </section>
         <section class="cards">
@@ -93,12 +92,6 @@
         </div>
     </li>
 </template>
-
-<script src="js/initialCards.js"></script>
-<script type="module" src="js/Popup.js"></script>
-<script type="module" src="js/Card.js"></script>
-<script type="module" src="js/FormValidator.js"></script>
-<script type="module"  src="js/index.js"></script>
 
 </body>
 </html>

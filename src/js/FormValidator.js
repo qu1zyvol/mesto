@@ -10,12 +10,19 @@ export default class FormValidator {
 
         const form = document.querySelector(formSelector);
 
-        this._formElement = form;
         this._inputList = Array.from(form.querySelectorAll(inputSelector));
         this._submitButton = form.querySelector(submitButtonSelector);
         this._inactiveButtonClass = inactiveButtonClass;
         this._inputErrorClass = inputErrorClass;
         this._errorClass = errorClass;
+
+        this._toggleButtonState = this._toggleButtonState.bind(this);
+        this._showInputError = this._showInputError.bind(this);
+        this._hideInputError = this._hideInputError.bind(this);
+        this._hasInvalidInput = this._hasInvalidInput.bind(this);
+        this._checkInputValidity = this._checkInputValidity.bind(this);
+        this.resetValidation = this.resetValidation.bind(this);
+        this.enableValidation = this.enableValidation.bind(this);
     }
 
     _showInputError(inputElement, errorMessage) {
