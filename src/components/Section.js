@@ -1,8 +1,8 @@
 class Section {
-    constructor({ items, renderer }, parentSelector) {
+    constructor({ items, renderer }, containerSelector) {
         this.items = items;
         this.renderer = renderer;
-        this.parent = document.querySelector(parentSelector);
+        this.parent = document.querySelector(containerSelector);
         this.addItem = this.addItem.bind(this);
         this.renderAll = this.renderAll.bind(this);
     }

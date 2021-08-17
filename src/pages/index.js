@@ -1,11 +1,12 @@
-import '../pages/index.css';
-import Card from "./Card.js";
-import Section from "./Section.js";
-import FormValidator from "./FormValidator.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
-import initialCards from "./initialCards.js";
+import './index.css';
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import initialCards from "../utils/initialCards.js";
+import { validatorProps } from "../utils/constants.js";
 
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
@@ -14,14 +15,6 @@ const editProfileForm = document.querySelector('.popup__edit-profile');
 const userInfo = new UserInfo('.profile__title', '.profile__subtitle');
 
 /* Enable form validator */
-const validatorProps = {
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save-button',
-    inactiveButtonClass: 'popup__save-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-};
-
 const profileFormValidator = new FormValidator(validatorProps, '.popup__edit-profile');
 const cardFormValidator = new FormValidator(validatorProps, '.popup__add-card');
 
@@ -42,6 +35,7 @@ cardsSection.renderAll();
 const openProfilePopup = () => {
     profileFormValidator.resetValidation();
     const data = userInfo.getUserInfo();
+    // Передавать data в вызов попапа нельзя, данные будут каждый раз старые (он вызовется один раз при инициализации класса)
     editProfileForm.querySelectorAll('input').forEach(input => {
         input.value = data[input.name];
     });

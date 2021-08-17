@@ -38,7 +38,6 @@ class PopupWithForm extends Popup {
         e.preventDefault();
         const data = this._getInputValues();
         this.formSubmitHandler(data);
-        this.form.reset();
         this.close();
     }
 
