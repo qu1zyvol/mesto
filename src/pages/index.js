@@ -5,8 +5,13 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import initialCards from "../utils/initialCards.js";
+import Api from "../components/Api.js";
 import { validatorProps } from "../utils/constants.js";
+
+const api = new Api({
+    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-27",
+    accessToken: "815301eb-e78e-456d-b945-5a0b4eb50195"
+});
 
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
@@ -24,13 +29,28 @@ cardFormValidator.enableValidation();
 
 const cardPopup = new PopupWithImage('#show-card-popup');
 
-const createCard = (cardData) => {
-    const card = new Card(cardData, '#card', cardPopup.open);
+const createCard = (cardData, api) => {
+    const card = new Card(cardData, '#card', cardPopup.open, api);
     return card.renderCard();
 }
 
-const cardsSection = new Section({ items: initialCards, renderer: createCard }, '.cards__list');
-cardsSection.renderAll();
+api.getUserProfile().then(data => {
+    if(typeof  data === 'object'){
+        const userId = data._id;
+        userInfo.setUserInfo({
+            title: data.name,
+            subtitle: data.about
+        });
+        api.getCards().then(data => {
+            if(typeof  data === 'object'){
+                const cardsSection = new Section({ items: data, renderer: createCard}, '.cards__list', userId, api);
+                const addCardPopup = new PopupWithForm('#add-card-popup', cardFormValidator.resetValidation, cardsSection.addItem);
+                addCardButton.addEventListener('click', addCardPopup.open);
+                cardsSection.renderAll();
+            }
+        });
+    }
+});
 
 const openProfilePopup = () => {
     profileFormValidator.resetValidation();
@@ -42,9 +62,8 @@ const openProfilePopup = () => {
 }
 
 const profilePopup = new PopupWithForm('#profile-popup', openProfilePopup, userInfo.setUserInfo);
-const addCardPopup = new PopupWithForm('#add-card-popup', cardFormValidator.resetValidation, cardsSection.addItem);
 
 editProfileButton.addEventListener('click', profilePopup.open);
-addCardButton.addEventListener('click', addCardPopup.open);
+
 
 document.body.classList.remove('preload');
