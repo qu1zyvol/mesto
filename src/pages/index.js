@@ -37,7 +37,7 @@ const cardPopup = new PopupWithImage('#show-card-popup');
 const deleteConfirmPopup = new PopupDeleteConfirm('#delete-confirm');
 
 const createCard = (cardData, api) => {
-    const card = new Card(cardData, '#card', cardPopup.open, deleteConfirmPopup, api);
+    const card = new Card(cardData, '#card', cardPopup.open, deleteConfirmPopup.open, api);
     return card.renderCard();
 }
 

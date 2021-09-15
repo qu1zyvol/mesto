@@ -1,9 +1,9 @@
 export default class Card {
-    constructor(data, template, handleCardClick, deleteConfirmPopup, api){
+    constructor(data, template, handleCardClick, handleRemoveClick, api){
         this._setCardData(data);
         this._userId = data.userId;
         this._handleCardClick = handleCardClick;
-        this._deleteConfirmPopup = deleteConfirmPopup;
+        this._handleRemoveClick = handleRemoveClick;
         this._template = template;
         this._api = api;
         this._removeCard = this._removeCard.bind(this);
@@ -44,7 +44,7 @@ export default class Card {
     }
 
     _showRemoveConfirm() {
-        this._deleteConfirmPopup.open(this._removeCard);
+        this._handleRemoveClick(this._removeCard);
     }
 
     _makeElement() {
