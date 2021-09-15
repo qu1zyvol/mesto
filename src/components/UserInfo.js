@@ -23,7 +23,7 @@ class UserInfo {
                 this._setUserFields(userData);
                 return userId;
             }
-        })
+        });
     }
 
     getUserInfo() {

@@ -22,7 +22,7 @@ export default class Card {
             this._setCardData(cardData);
             this._setLikeActive(this._isCardLiked());
             this._setLikesCount();
-        });
+        }).catch(console.error);
     }
 
     _isCardLiked(){
@@ -40,7 +40,7 @@ export default class Card {
     _removeCard() {
         return this._api.deleteCard(this._id).then(() => {
             this._cardElement.remove();
-        });
+        }).catch(console.error);
     }
 
     _showRemoveConfirm() {

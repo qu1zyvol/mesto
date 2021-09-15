@@ -40,16 +40,13 @@ class PopupWithForm extends Popup {
         const oldButtonText = this._submitButton.textContent;
         this._submitButton.textContent = 'Загрузка...';
         const data = this._getInputValues();
-        try {
-            this.formSubmitHandler(data).then(() => {
-                this._submitButton.textContent = oldButtonText;
-                this.close();
-            });
-        } catch (e) {
-            this.formSubmitHandler(data);
-            this._submitButton.textContent = oldButtonText;
+        this.formSubmitHandler(data).then(() => {
             this.close();
-        }
+        }).finally(() => {
+            this._submitButton.textContent = oldButtonText;
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     _setEventListeners() {

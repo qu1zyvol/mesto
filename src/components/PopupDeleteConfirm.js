@@ -10,12 +10,9 @@ class PopupDeleteConfirm extends Popup {
     }
 
     _actionButtonClick(){
-        try {
-            this.actionHandler();
+        this.actionHandler().then(() => {
             this.close();
-        }catch (e){
-            console.log(e);
-        }
+        }).catch(console.error);
     }
 
     close() {

@@ -41,17 +41,6 @@ const createCard = (cardData, api) => {
     return card.renderCard();
 }
 
-userInfo.fetchUserInfo().then(userId => {
-    api.getCards().then(data => {
-        if(typeof  data === 'object'){
-            const cardsSection = new Section({ items: data, renderer: createCard}, '.cards__list', userId, api);
-            const addCardPopup = new PopupWithForm('#add-card-popup', cardFormValidator.resetValidation, cardsSection.addItem);
-            addCardButton.addEventListener('click', addCardPopup.open);
-            cardsSection.renderAll();
-        }
-    });
-});
-
 const openProfilePopup = () => {
     profileFormValidator.resetValidation();
     const data = userInfo.getUserInfo();
@@ -63,11 +52,6 @@ const openProfilePopup = () => {
 
 const openAvatarPopup = () => {
     avatarFormValidator.resetValidation();
-    const data = userInfo.getUserInfo();
-    // Передавать data в вызов попапа нельзя, данные будут каждый раз старые (он вызовется один раз при инициализации класса)
-    editAvatarForm.querySelectorAll('input').forEach(input => {
-        input.value = data[input.name];
-    });
 }
 
 const profilePopup = new PopupWithForm('#profile-popup', openProfilePopup, userInfo.setUserInfo);
@@ -75,6 +59,17 @@ const avatarPopup = new PopupWithForm('#edit-avatar', openAvatarPopup, userInfo.
 
 editProfileButton.addEventListener('click', profilePopup.open);
 editAvatarButton.addEventListener('click', avatarPopup.open);
+
+userInfo.fetchUserInfo().then(userId => {
+    api.getCards().then(data => {
+        if(typeof  data === 'object'){
+            const cardsSection = new Section({ items: data, renderer: createCard}, '.cards__list', userId, api);
+            const addCardPopup = new PopupWithForm('#add-card-popup', cardFormValidator.resetValidation, cardsSection.addItem);
+            addCardButton.addEventListener('click', addCardPopup.open);
+            cardsSection.renderAll();
+        }
+    }).catch(console.error);
+}).catch(console.error);
 
 
 document.body.classList.remove('preload');

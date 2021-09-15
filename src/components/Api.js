@@ -11,13 +11,10 @@ class Api {
         if(res.ok){
             return res.json();
         }
-        res.json().then(error => {
+        // Сервер возвращает ошибку в json в поле message!!! Так что нельзя не распарсить JSON!
+        return res.json().then(error => {
             return Promise.reject(`Ошибка: ${error.message}`);
         });
-    }
-
-    _prepareError(e) {
-        return e.message;
     }
 
     _doRequest(url, method = 'GET', data = null) {
@@ -31,8 +28,6 @@ class Api {
         }
         return fetch(reqUrl, fetchParams).then(res => {
             return this._prepareResponse(res);
-        }).catch(err => {
-            return this._prepareError(err);
         });
     }
 
