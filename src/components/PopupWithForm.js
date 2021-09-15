@@ -13,6 +13,7 @@ class PopupWithForm extends Popup {
         this._onFormSubmit = this._onFormSubmit.bind(this);
         this._getInputValues = this._getInputValues.bind(this);
         this._setInitialValues = this._getInputValues.bind(this);
+        this._submitButton = this.form.querySelector('button[type=submit]');
         this.initialValues = initialValues;
     }
 
@@ -36,9 +37,19 @@ class PopupWithForm extends Popup {
 
     _onFormSubmit(e) {
         e.preventDefault();
+        const oldButtonText = this._submitButton.textContent;
+        this._submitButton.textContent = 'Загрузка...';
         const data = this._getInputValues();
-        this.formSubmitHandler(data);
-        this.close();
+        try {
+            this.formSubmitHandler(data).then(() => {
+                this._submitButton.textContent = oldButtonText;
+                this.close();
+            });
+        } catch (e) {
+            this.formSubmitHandler(data);
+            this._submitButton.textContent = oldButtonText;
+            this.close();
+        }
     }
 
     _setEventListeners() {
@@ -52,7 +63,7 @@ class PopupWithForm extends Popup {
     }
 
     open() {
-        this.beforeOpen();
+        if(this.beforeOpen) this.beforeOpen();
         this._setInitialValues();
         super.open();
     }

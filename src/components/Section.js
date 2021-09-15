@@ -10,7 +10,7 @@ class Section {
     }
 
     addItem(newCardData) {
-        this._api.createCard(newCardData).then(cardData => {
+        return this._api.createCard(newCardData).then(cardData => {
             cardData.userId = this._userId;
             this.parent.prepend(this.renderer(cardData, this._api));
         });

@@ -55,6 +55,15 @@ class Api {
     deleteCard(cardId){
         return this._doRequest(`/cards/${cardId}`, 'DELETE');
     }
+
+    updateProfile(profileData) {
+        return this._doRequest('/users/me', 'PATCH', profileData);
+    }
+
+    updateAvatar(avatarData) {
+        console.log('WE HERE');
+        return this._doRequest('/users/me/avatar', 'PATCH', avatarData);
+    }
 }
 
 export default Api;

@@ -21,7 +21,6 @@ class Popup {
     }
 
     _setEventListeners() {
-        console.log(this.popup);
         document.addEventListener('keydown', this._handleEscClose);
         this.popup.addEventListener('mousedown', this._handleCLickAnyway);
         this.popup.querySelector('.popup__close-button').addEventListener('click', this.close);

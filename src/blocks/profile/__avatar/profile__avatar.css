@@ -1,4 +1,24 @@
 .profile__avatar {
     padding: 0;
     margin: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.profile__avatar:hover {
+    cursor: pointer;
+}
+
+.profile__avatar:hover::after {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    content: url("../../../images/buttons/edit-avatar.svg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
 }

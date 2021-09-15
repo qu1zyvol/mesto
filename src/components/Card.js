@@ -1,14 +1,15 @@
 export default class Card {
-    constructor(data, template, handleCardClick, api){
+    constructor(data, template, handleCardClick, deleteConfirmPopup, api){
         this._setCardData(data);
         this._userId = data.userId;
         this._handleCardClick = handleCardClick;
+        this._deleteConfirmPopup = deleteConfirmPopup;
         this._template = template;
         this._api = api;
+        this._removeCard = this._removeCard.bind(this);
     }
 
     _setCardData(data){
-        console.log(data);
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes;
@@ -37,9 +38,13 @@ export default class Card {
     }
 
     _removeCard() {
-        this._api.deleteCard(this._id).then(() => {
+        return this._api.deleteCard(this._id).then(() => {
             this._cardElement.remove();
         });
+    }
+
+    _showRemoveConfirm() {
+        this._deleteConfirmPopup.open(this._removeCard);
     }
 
     _makeElement() {
@@ -52,7 +57,7 @@ export default class Card {
 
     _setEventListeners() {
         this._likeButton.addEventListener('click', () => this._toggleLike());
-        this._removeButton.addEventListener('click', () => this._removeCard());
+        this._removeButton.addEventListener('click', () => this._showRemoveConfirm());
         this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     }
 
