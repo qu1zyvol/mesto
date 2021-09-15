@@ -61,7 +61,6 @@ class Api {
     }
 
     updateAvatar(avatarData) {
-        console.log('WE HERE');
         return this._doRequest('/users/me/avatar', 'PATCH', avatarData);
     }
 }
